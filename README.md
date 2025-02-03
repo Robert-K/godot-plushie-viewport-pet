@@ -2,6 +2,8 @@
 
 This Godot plugin adds a Viewport Pet (like a [Desktop Pet](https://itch.io/games/tag-desktop-pet)) to your Godot Editor!
 
+![Screenshot](screenshot.png)
+
 This cuddly companion walks around, tries to get close to your cursor and even falls asleep when you're not using the editor!
 
 ![GIF Preview](https://img.itch.zone/aW1hZ2UvMjc5OTIxMS8xNjcxNTMzMC5naWY=/original/%2BziASZ.gif)
