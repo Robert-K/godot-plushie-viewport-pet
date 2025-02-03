@@ -2,7 +2,7 @@
 class_name GodotPlushieViewportPet
 extends AnimatedSprite2D
 
-var viewport_container: SubViewportContainer # Assigned by plugin
+var main_screen: CanvasItem # Assigned by plugin
 @onready var idle_timer := %IdleTimer
 
 var target: float
@@ -17,26 +17,26 @@ var half_size: float = sprite_frames.get_frame_texture("idle", 0).get_size().x *
 var last_input_time: int
 
 func find_new_target() -> void:
-	var mouse_position := viewport_container.get_local_mouse_position()
-	if viewport_container.get_rect().has_point(mouse_position):
+	var mouse_position := main_screen.get_local_mouse_position()
+	if main_screen.get_rect().has_point(mouse_position):
 		target = mouse_position.x
 	else:
-		target = randf_range(half_size, viewport_container.size.x - half_size)
+		target = randf_range(half_size, main_screen.size.x - half_size)
 	state = State.RUN
 
 func _ready() -> void:
-	if not is_instance_valid(viewport_container): # Only run if spawned by plugin
+	if not is_instance_valid(main_screen): # Only run if spawned by plugin
 		return
 	last_input_time = Time.get_ticks_msec()
-	position = Vector2(-half_size, viewport_container.size.y)
+	position = Vector2(half_size, main_screen.size.y)
 	play("idle")
 	idle_timer.timeout.connect(find_new_target)
 	find_new_target()
 
 func _process(delta: float) -> void:
-	if not is_instance_valid(viewport_container): # Only run if spawned by plugin
+	if not is_instance_valid(main_screen): # Only run if spawned by plugin
 		return
-	position.y = viewport_container.size.y
+	position.y = main_screen.size.y
 	var idle_time = Time.get_ticks_msec() - last_input_time
 	match state:
 		State.IDLE:
@@ -56,6 +56,9 @@ func _process(delta: float) -> void:
 				flip_h = difference < 0.0
 		State.SNOOZE:
 			play("snooze")
+	var max_x: float = main_screen.size.x - half_size
+	position.x = clamp(position.x, half_size, max_x)
+	target = clamp(target, half_size, max_x)
 
 func _input(event: InputEvent) -> void:
 	last_input_time = Time.get_ticks_msec()

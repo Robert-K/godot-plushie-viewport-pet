@@ -7,13 +7,10 @@ var godot_plushie: AnimatedSprite2D
 func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		return
-	var viewport_container := EditorInterface.get_editor_viewport_2d().get_parent()
-	if not is_instance_valid(viewport_container):
-		printerr("Godot Plushie Viewport Pet couldn't find the EditorViewportContainer")
-		return
 	godot_plushie = preload("res://addons/godot_plushie_viewport_pet/godot_plushie.tscn").instantiate()
-	godot_plushie.viewport_container = viewport_container
-	viewport_container.add_child(godot_plushie)
+	var main_screen = EditorInterface.get_editor_main_screen()
+	godot_plushie.main_screen = main_screen
+	main_screen.add_child(godot_plushie)
 
 func _exit_tree() -> void:
 	if is_instance_valid(godot_plushie):
