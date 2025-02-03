@@ -1,0 +1,150 @@
+[gd_scene load_steps=22 format=3 uid="uid://j7nlt5y4v70i"]
+
+[ext_resource type="Texture2D" uid="uid://c7ae1663txkl2" path="res://addons/godot_plushie_viewport_pet/sprites/spr_idle.png" id="1_08pc8"]
+[ext_resource type="Texture2D" uid="uid://5tbcq4n7u1b0" path="res://addons/godot_plushie_viewport_pet/sprites/spr_run.png" id="2_3cgmu"]
+[ext_resource type="Texture2D" uid="uid://dfqqtot4xw258" path="res://addons/godot_plushie_viewport_pet/sprites/spr_snooze.png" id="3_ymno5"]
+[ext_resource type="Script" path="res://addons/godot_plushie_viewport_pet/godot_plushie.gd" id="4_jnhgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsduy"]
+atlas = ExtResource("1_08pc8")
+region = Rect2(0, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2hcj"]
+atlas = ExtResource("1_08pc8")
+region = Rect2(37, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpc2u"]
+atlas = ExtResource("1_08pc8")
+region = Rect2(74, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiqkr"]
+atlas = ExtResource("1_08pc8")
+region = Rect2(111, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euqfa"]
+atlas = ExtResource("2_3cgmu")
+region = Rect2(0, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3r28"]
+atlas = ExtResource("2_3cgmu")
+region = Rect2(37, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdbvy"]
+atlas = ExtResource("2_3cgmu")
+region = Rect2(74, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shptn"]
+atlas = ExtResource("2_3cgmu")
+region = Rect2(111, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl0nd"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(0, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvpkf"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(37, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwka8"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(74, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v78i"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(111, 0, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0hxd"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(0, 37, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxa60"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(37, 37, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrkf8"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(74, 37, 37, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wofr"]
+atlas = ExtResource("3_ymno5")
+region = Rect2(111, 37, 37, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j44vu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsduy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2hcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpc2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiqkr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euqfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3r28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdbvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shptn")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl0nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvpkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwka8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v78i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0hxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxa60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrkf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wofr")
+}],
+"loop": true,
+"name": &"snooze",
+"speed": 6.0
+}]
+
+[node name="GodotPlushie" type="AnimatedSprite2D"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_j44vu")
+animation = &"idle"
+frame_progress = 0.165593
+offset = Vector2(0, -18.5)
+script = ExtResource("4_jnhgy")
+
+[node name="IdleTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

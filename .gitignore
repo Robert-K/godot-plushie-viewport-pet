@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Godot Project files
+*.import
+icon.svg
+project.godot
