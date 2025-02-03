@@ -27,7 +27,6 @@ func find_new_target() -> void:
 func _ready() -> void:
 	if not is_instance_valid(viewport_container): # Only run if spawned by plugin
 		return
-	print(half_size)
 	last_input_time = Time.get_ticks_msec()
 	position = Vector2(-half_size, viewport_container.size.y)
 	play("idle")
